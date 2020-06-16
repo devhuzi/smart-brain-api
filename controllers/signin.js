@@ -1,4 +1,4 @@
-const signinHandler =  (req, res, db, bcrypt) => {
+const signinHandler = (req, res, db, bcrypt) => {
     const { email, password } = req.body;
 
     db.select('email', 'hash').from('login')
