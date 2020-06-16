@@ -2,7 +2,7 @@ const registerHandler = (req, res, db, bcrypt) => {
     const { email, name, password } = req.body;
 
     if(!email || !password){
-        res.status(400).json('invalid details')
+       return res.status(400).json('invalid details')
     }
 
     const hash = bcrypt.hashSync(password);
@@ -24,7 +24,7 @@ const registerHandler = (req, res, db, bcrypt) => {
                         joined: new Date()
                     }).then(user => {
                         res.json(user[0])
-                    })
+                    }).catch(err => res.status(400).json('its not working'))
 
 
             })
